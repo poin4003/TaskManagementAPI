@@ -54,6 +54,14 @@ public class UserRepository : IUserRepository
             users = users.Where(p => p.Email.Contains(query.Email));
         }
 
+        if (!string.IsNullOrEmpty(query.SortBy))
+        {
+            if (query.SortBy.Equals("AccessTime", StringComparison.OrdinalIgnoreCase))
+            {
+                users = query.IsDecsending ? users.OrderByDescending(p => p.AccessTime) : users.OrderBy(p => p.AccessTime);
+            }
+        }
+
         return await users.ToListAsync();
     }
 
@@ -72,6 +80,7 @@ public class UserRepository : IUserRepository
         existingUser.Name = userModel.Name;
         existingUser.Birthday = userModel.Birthday;
         existingUser.Email = userModel.Email;
+        existingUser.AccessTime = userModel.AccessTime;
 
         await _context.SaveChangesAsync();
         

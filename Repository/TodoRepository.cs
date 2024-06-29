@@ -47,6 +47,14 @@ public class TodoRepository : ITodoRepository
             todos = todos.Where(p => p.Description.Contains(query.Description));
         }
 
+        if (!string.IsNullOrEmpty(query.SortBy))
+        {
+            if (query.SortBy.Equals("Id", StringComparison.OrdinalIgnoreCase))
+            {
+                todos = query.IsDecsending ? todos.OrderByDescending(p => p.Id) : todos.OrderBy(p => p.Id);
+            }
+        }
+
         return await todos.ToListAsync();
     }
 

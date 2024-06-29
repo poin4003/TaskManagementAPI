@@ -13,6 +13,7 @@ public static class UserMappers
             Name = userModel.Name,
             Birthday = userModel.Birthday,
             Email = userModel.Email,
+            AccessTime = userModel.AccessTime,
             Todos = userModel.Todos.Select(p => p.ToTodoDto()).ToList(),
         };
     }
@@ -24,6 +25,7 @@ public static class UserMappers
             Name = userRequestDto.Name,
             Birthday = userRequestDto.Birthday,
             Email = userRequestDto.Email,
+            AccessTime = userRequestDto.AccessTime,
         };
     }
 
@@ -34,6 +36,7 @@ public static class UserMappers
             Name = userRequestDto.Name,
             Birthday = userRequestDto.Birthday,
             Email = userRequestDto.Email,
+            AccessTime = userRequestDto.AccessTime,
         };
     }
 }

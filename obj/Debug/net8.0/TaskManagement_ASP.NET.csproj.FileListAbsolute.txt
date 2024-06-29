@@ -139,3 +139,4 @@ C:\workspace\C#\api\TaskManagement_ASP.NET\bin\Debug\net8.0\Microsoft.AspNetCore
 C:\workspace\C#\api\TaskManagement_ASP.NET\bin\Debug\net8.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 C:\workspace\C#\api\TaskManagement_ASP.NET\bin\Debug\net8.0\Newtonsoft.Json.dll
 C:\workspace\C#\api\TaskManagement_ASP.NET\bin\Debug\net8.0\Newtonsoft.Json.Bson.dll
+C:\workspace\C#\api\TaskManagement_ASP.NET\obj\Debug\net8.0\TaskManagement_ASP.NET.sourcelink.json

@@ -19,5 +19,6 @@ public class User
     public DateTime Birthday { get; set; }
     [StringLength(100)]
     public string Email { get; set; } = string.Empty;
+    public int AccessTime { get; set; }
     public virtual ICollection<Todo> Todos { get; set; } = new List<Todo>();
 }

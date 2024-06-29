@@ -13,4 +13,5 @@ public class UpdateUserRequestDto
     [Required]
     [EmailAddress(ErrorMessage = "Invalid Email Address!")]
     public string Email { get; set; } = string.Empty;
+    public int AccessTime { get; set; }
 }
