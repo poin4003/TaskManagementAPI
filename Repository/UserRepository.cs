@@ -36,7 +36,7 @@ public class UserRepository : IUserRepository
 
     public async Task<List<User>> GetAllAsync(UserQueryObject query)
     {
-        var users = _context.Users.Include(p => p.Todos).AsQueryable();
+        var users = _context.Users.AsQueryable();
 
         if (!string.IsNullOrWhiteSpace(query.Name))
         {
@@ -62,7 +62,9 @@ public class UserRepository : IUserRepository
             }
         }
 
-        return await users.ToListAsync();
+        var skipNumber = (query.PageNumber - 1) * query.PageSize;
+
+        return await users.Skip(skipNumber).Take(query.PageSize).ToListAsync();
     }
 
     public async Task<User?> GetByIdAsync(int id)

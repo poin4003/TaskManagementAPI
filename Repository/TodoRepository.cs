@@ -55,7 +55,9 @@ public class TodoRepository : ITodoRepository
             }
         }
 
-        return await todos.ToListAsync();
+        var skipNumber = (query.PageNumber - 1) * query.PageSize;
+
+        return await todos.Skip(skipNumber).Take(query.PageSize).ToListAsync();
     }
 
     public async Task<Todo> GetByIdAsync(int id)
