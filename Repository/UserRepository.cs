@@ -56,9 +56,25 @@ public class UserRepository : IUserRepository
 
         if (!string.IsNullOrEmpty(query.SortBy))
         {
-            if (query.SortBy.Equals("AccessTime", StringComparison.OrdinalIgnoreCase))
+            switch (query.SortBy.ToLower())
             {
-                users = query.IsDecsending ? users.OrderByDescending(p => p.AccessTime) : users.OrderBy(p => p.AccessTime);
+                case "id":
+                    users = query.IsDecsending ? users.OrderByDescending(p => p.Id) : users.OrderBy(p => p.Id);
+                    break;
+                case "name":
+                    users = query.IsDecsending ? users.OrderByDescending(p => p.Name) : users.OrderBy(p => p.Name);
+                    break;
+                case "birthday":
+                    users = query.IsDecsending ? users.OrderByDescending(p => p.Birthday) : users.OrderBy(p => p.Birthday);
+                    break;
+                case "email":
+                    users = query.IsDecsending ? users.OrderByDescending(p => p.Email) : users.OrderBy(p => p.Email);
+                    break;
+                case "accesstime":
+                    users = query.IsDecsending ? users.OrderByDescending(p => p.AccessTime) : users.OrderBy(p => p.AccessTime);
+                    break; 
+                default:
+                    break;
             }
         }
 

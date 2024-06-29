@@ -49,10 +49,29 @@ public class TodoRepository : ITodoRepository
 
         if (!string.IsNullOrEmpty(query.SortBy))
         {
-            if (query.SortBy.Equals("Id", StringComparison.OrdinalIgnoreCase))
-            {
-                todos = query.IsDecsending ? todos.OrderByDescending(p => p.Id) : todos.OrderBy(p => p.Id);
-            }
+           switch (query.SortBy.ToLower())
+           {
+                case "id":
+                    todos = query.IsDecsending ? todos.OrderByDescending(p => p.Id) : todos.OrderBy(p => p.Id);
+                    break;
+                case "name":
+                    todos = query.IsDecsending ? todos.OrderByDescending(p => p.Name) : todos.OrderBy(p => p.Name);
+                    break;
+                case "description":
+                    todos = query.IsDecsending ? todos.OrderByDescending(p => p.Description) : todos.OrderBy(p => p.Description);
+                    break;
+                case "starttime":
+                    todos = query.IsDecsending ? todos.OrderByDescending(p => p.StartTime) : todos.OrderBy(p => p.StartTime);
+                    break;
+                case "endtime":
+                    todos = query.IsDecsending ? todos.OrderByDescending(p => p.EndTime) : todos.OrderBy(p => p.EndTime);
+                    break;
+                case "userId":
+                    todos = query.IsDecsending ? todos.OrderByDescending(p => p.UserId) : todos.OrderBy(p => p.UserId);
+                    break;
+                default:
+                    break;
+           }
         }
 
         var skipNumber = (query.PageNumber - 1) * query.PageSize;
